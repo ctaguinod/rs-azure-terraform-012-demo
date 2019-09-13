@@ -1,0 +1,20 @@
+###############################################################################
+# VNET
+###############################################################################
+location               = "Southeast Asia"
+resource_group_name    = "SEA-RSG-ALL-TEST"
+environment            = "Development"
+vnet_name              = "SEA-VNET01"
+address_space          = "172.18.0.0/16"
+gateway_subnet_prefix  = "172.18.1.0/27"
+gateway_subnet_name    = "GatewaySubnet"
+bastion_subnet_prefix  = "172.18.2.0/24"
+bastion_subnet_name    = "RAX-BASTION-SUBNET"
+frontend_subnet_prefix = "172.18.3.0/24"
+frontend_subnet_name   = "FRONTEND-SUBNET"
+app_subnet_prefix      = "172.18.4.0/24"
+app_subnet_name        = "APP-SUBNET"
+db_subnet_prefix       = "172.18.5.0/24"
+db_subnet_name         = "DB-SUBNET"
+dmz_subnet_prefix      = "172.18.6.0/24"
+dmz_subnet_name        = "DMZ-SUBNET"
