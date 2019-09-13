@@ -81,7 +81,7 @@ packer build packer-azure-win2016-chef.json
 ## Provision ***200compute*** layer
 - This layer will provision a Virtuak Machine from the pre-baked image created with Packer and chef from the previous section.
 
-1. Create `terraform.tfvars` from sample file and fill in with correct parameters.
+1. Create `terraform.tfvars` from sample file and fill in with correct parameters. Get the `vm_os_id` value using the command `az image list -o tsv`
 ```
 cd ../terraform/layers/Development/200compute/
 cp terraform.tfvars-example terraform.tfvars
