@@ -7,18 +7,17 @@ output "state_import_example" {
 
   value = <<EOF
 
-  data "terraform_remote_state" "200compute" {
+  data "terraform_remote_state" "100data" {
     backend = "azurerm"
 
     config = {
       storage_account_name = "${data.terraform_remote_state.main_state.outputs.terraform_storage_account_name}"
       container_name       = "${data.terraform_remote_state.main_state.outputs.terraform_storage_container_name}"
-      key                  = "terraform.${lower(var.environment)}.200compute.tfstate"
+      key                  = "terraform.${lower(var.environment)}.100data.tfstate"
     }
   }
 EOF
 }
-
 
 ###############################################################################
 # Summary Output
@@ -27,18 +26,14 @@ EOF
 output "summary" {
   value = <<EOF
 
-## Outputs - 200compute layer
+## Outputs - 100data layer
 
-| TestVM | Value |
+| * | Value |
 |---|---|
-| availability_set_id | ${module.mytestvm.availability_set_id} |
-| network_interface_private_ip | ${module.mytestvm.network_interface_private_ip[0]} |
-| public_ip_address | ${module.mytestvm.public_ip_address[0]} |
-| public_ip_dns_name | ${module.mytestvm.public_ip_dns_name[0]} |
-| public_ip_id | ${module.mytestvm.public_ip_id[0]} |
-| vm_ids | ${module.mytestvm.vm_ids[0]} |
+| storage_account_name | ${azurerm_storage_account.storage.name} |
+| storage_container_name | ${azurerm_storage_container.storage.name} |
 
 EOF
 
-  description = "200compute Layer Outputs Summary `terraform output summary` "
+  description = "Data Layer Outputs Summary `terraform output summary` "
 }

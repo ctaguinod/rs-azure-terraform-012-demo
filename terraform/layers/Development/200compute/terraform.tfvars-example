@@ -1,7 +1,11 @@
 ###############################################################################
-# VNET
+# Environment
 ###############################################################################
 location            = "Southeast Asia"
 resource_group_name = "SEA-RSG-WEB-TEST"
 environment         = "Development"
+
+###############################################################################
+# VM
+###############################################################################
 vm_os_id            = "/subscriptions/AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE/resourceGroups/SEA-RSG-ALL-TEST/providers/Microsoft.Compute/images/TEST-PACKER-WIN2016-CHEF-01"

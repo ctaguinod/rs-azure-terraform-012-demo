@@ -1,0 +1,6 @@
+###############################################################################
+# Environment
+###############################################################################
+location            = "Southeast Asia"
+resource_group_name = "SEA-RSG-WEB-TEST"
+environment         = "Development"

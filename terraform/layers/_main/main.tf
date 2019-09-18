@@ -17,6 +17,16 @@ terraform {
 }
 
 ###############################################################################
+# RSG
+###############################################################################
+
+resource "azurerm_resource_group" "terraform_state" {
+  location = var.location
+  name     = local.resource_group_name
+  tags     = local.tags
+}
+
+###############################################################################
 # Storage for Terraform state
 ###############################################################################
 resource "random_id" "storage" {
@@ -34,13 +44,6 @@ locals {
 
   # Resource Group Name
   resource_group_name = var.resource_group_name
-}
-
-# Resource Group - Prod
-resource "azurerm_resource_group" "terraform_state" {
-  location = var.location
-  name     = local.resource_group_name
-  tags     = local.tags
 }
 
 # Storage Account

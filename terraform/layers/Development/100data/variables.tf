@@ -34,10 +34,3 @@ variable "environment" {
 variable "resource_group_name" {
   description = "Resource Group Name"
 }
-
-###############################################################################
-# VM
-###############################################################################
-variable "vm_os_id" {
-  description = "Custom VM Image to use."
-}
