@@ -1,0 +1,36 @@
+{
+  "name": "azure_file",
+  "description": "Downloads the file from Azure Blob Storage",
+  "long_description": "azure_file cookbook\n========================\n\nDescription\n===========\n\nThis cookbook provides a [Lightweight Resource and Provider](https://chef.readthedocs.io/en/latest/lwrps_custom.html)\nto download files from Azure blob storage. It's a replacement for the [s3_file](https://supermarket.chef.io/cookbooks/s3_file)\ncookbook for Azure.\n\nRequirements\n============\n\n* A Microsoft Azure account is required.\n* Requires Chef 0.7.10 or higher for Lightweight Resource and Provider support.\n  Chef 0.8+ is recommended. [Download and Install the Chef DK](https://docs.chef.io/install_dk.html).\n\nNOTE: [azure-storage-common](https://rubygems.org/gems/azure-storage-common) gem has runtime dependencies\non [azure-core](https://rubygems.org/gems/azure-core) and [nokogiri](https://rubygems.org/gems/nokogiri)\nboth of which are embedded in the Chef DK Ruby gems.\n\nQuickstart\n==========\n\n    mkdir cookbooks\n    cd cookbooks\n    git clone https://github.com/adobe/azure_file.git\n    chef-client --local-mode --override-runlist azure_file\n\nWhile this cookbook can be used in `chef-solo` mode, to gain the most flexibility,\nwe recommend using `chef-client` with a Chef Server.\n\nRecipes\n=======\n\ndefault.rb\n----------\n\nThe default recipe installs the [azure-storage-common](https://rubygems.org/gems/azure-storage-common)\nRubyGem, which this cookbook requires in order to work with the Azure API. Make sure that the `azure_file`\nrecipe is in the node or role `run_list` before any resources from this cookbook are used.\n\n    \"run_list\": [\n      \"recipe[azure_file]\"\n    ]\n\nThe `gem_package` is created as a Ruby Object and thus installed during the Compile\nPhase of the Chef run.\n\nResources and Providers\n=======================\n\nThis cookbook provides one resource and a corresponding provider.\n\n## azure_file\n\nThis resource is a wrapper around the core [`remote_file`](https://docs.chef.io/resource_remote_file.html)\nresource that will generate an expiring link (SAS token) if you pass `access_key` or MSI access token if you pass `msi_client_id` to retrieve your file from protected blob storage.\n\nActions:\n\n* `create` - create the file\n* `create_if_missing` - create the file if it does not already exist. default\n* `delete` - delete the file\n* `touch` - touch the file\n\nAttribute Parameters:\n\n* `storage_account` - the azure storage account you are accessing\n* `access_key` - the access key to this azure storage account\n* `msi_client_id` - the MSI client id with at least read permission to the storage account\n* `path` - where this file will be created on the machine\n* `remote_path` - the path of the file/key to pull including folder\n* `container` - the name of the azure blob storage container/bucket from where to pull\n\nThe following parameters are inherited from the [`remote_file`](https://docs.chef.io/resource_remote_file.html)\nresource:\n\n* `owner`\n* `group`\n* `mode`\n* `checksum`\n* `backup`\n* `inherits`\n* `rights`\n\nExamples:\n\n### Using Azure Storage Account Access Keys\n\n```ruby\nazure_file '/tmp/secret_file.jpg' do\n  storage_account 'secretstorage'\n  access_key 'eW91cmtleWluYmFzZTY0.....'\n  container 'images'\n  remote_path 'secret_file.jpg'\nend\n```\n\n### Using Azure Managed Service Identity (MSI)\n```ruby\nazure_file '/tmp/secret_file.jpg' do\n  storage_account 'secretstorage'\n  msi_client_id 'xxxxx-xxxx-xxxxx-xxxx-xxxxx'\n  container 'images'\n  remote_path 'secret_file.jpg'\nend\n```\n\nUnit Test\n=========\nUnit tests are defined under the `./spec` folder.\n\nTo execute unit tests, run the following command:\n\n    chef exec rspec\n\nCode Style\n==========\nTo verify the code style of cookbook, just run the command:\n\n    cookstyle\n\nContributing\n==========\n\nContributions are welcomed! Read the [Contributing Guide](CONTRIBUTING.md) for more information.\n\nLicensing\n==========\n\nThis project is licensed under the Apache V2 License. See [LICENSE](LICENSE) for more information.\n\nAuthor\n==================\n\nAkash Lalwani (<alalwani@adobe.com>)\n\n",
+  "maintainer": "SharedCloud - Adobe Systems Inc.",
+  "maintainer_email": "alalwani@adobe.com",
+  "license": "All Rights Reserved",
+  "platforms": {
+
+  },
+  "dependencies": {
+
+  },
+  "providing": {
+
+  },
+  "attributes": {
+
+  },
+  "recipes": {
+
+  },
+  "version": "0.2.2",
+  "source_url": "",
+  "issues_url": "",
+  "privacy": false,
+  "chef_versions": [
+
+  ],
+  "ohai_versions": [
+
+  ],
+  "gems": [
+
+  ]
+}
