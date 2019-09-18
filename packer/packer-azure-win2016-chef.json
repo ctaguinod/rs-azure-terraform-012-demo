@@ -14,11 +14,11 @@
         "tenant_id": "{{user `tenant_id`}}",
         "subscription_id": "{{user `subscription_id`}}",
 
-        "managed_image_resource_group_name": "SEA-RSG-ALL-TEST",
-        "managed_image_name": "TEST-PACKER-WIN2016-CHEF-01",
+        "managed_image_resource_group_name": "CARLO-SEA-RSG-ALL-TEST",
+        "managed_image_name": "CARLO-TEST-PACKER-WIN2016-CHEF-02",
 
-        "virtual_network_name": "SEA-VNET01",
-        "virtual_network_resource_group_name": "SEA-RSG-ALL-TEST",
+        "virtual_network_name": "CARLO-SEA-VNET01",
+        "virtual_network_resource_group_name": "CARLO-SEA-RSG-ALL-TEST",
         "virtual_network_subnet_name": "DMZ-SUBNET",
         "private_virtual_network_with_public_ip": "True",
         
@@ -35,7 +35,7 @@
   
         "azure_tags": {
           "env": "development",
-          "owner": "owner"
+          "owner": "carlo"
         },
   
         "location": "Southeast Asia",

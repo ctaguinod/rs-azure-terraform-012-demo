@@ -18,3 +18,11 @@ chef_version '>= 14.0'
 # a Supermarket.
 #
 # source_url 'https://github.com/<insert_org_here>/demo'
+
+# https://supermarket.chef.io/cookbooks/azure_file
+# depends 'azure_file', '~> 0.2.2'
+depends 'azure_file'
+
+# https://supermarket.chef.io/cookbooks/iis
+# depends 'iis', '~> 7.2.0'
+depends 'iis'
